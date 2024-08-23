@@ -2,7 +2,9 @@ import { cache } from 'react'
 import { notFound } from 'next/navigation'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
-import { IBM_Plex_Serif, Inconsolata } from '@next/font/google'
+import { IBM_Plex_Serif, Inconsolata } from 'next/font/google'
+import { ChakraProvider } from '@chakra-ui/react'
+import Header from '@/components/Header'
 import type { Metadata } from 'next'
 
 interface RootLayoutProps {
@@ -62,7 +64,10 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body>
-        <main>{children}</main>
+        <ChakraProvider>
+          <Header />
+          <main>{children}</main>
+        </ChakraProvider>
       </body>
     </html>
   )
